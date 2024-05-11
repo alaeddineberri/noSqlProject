@@ -14,7 +14,7 @@ public class Teacher {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "course_id")
     private Course course;
 

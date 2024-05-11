@@ -3,6 +3,8 @@ package com.nosql.project.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "courses")
 public class Course {
@@ -14,8 +16,13 @@ public class Course {
     @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @Column(name = "teacher", nullable = false, length = 100)
-    private String teacher;
+    ////////////////// a course have multiple students
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Student> students;
+    ///////////////// a course have one Teacher
+    @OneToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 
     @Column(name = "summary", columnDefinition = "TEXT")
     private String summary;
@@ -33,12 +40,13 @@ public class Course {
     }
 
     // Constructeur avec tous les champs
-    public Course(String title, String teacher, String summary, String level, Integer availablePlaces) {
+    public Course(String title, Teacher teacher, String summary, String level, Integer availablePlaces, List<Student> students) {
         this.title = title;
         this.teacher = teacher;
         this.summary = summary;
         this.level = level;
         this.availablePlaces = availablePlaces;
+        this.students = students;
     }
 
     // Getters and setters
@@ -59,11 +67,19 @@ public class Course {
         this.title = title;
     }
 
-    public String getTeacher() {
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
