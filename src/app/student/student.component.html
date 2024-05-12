@@ -1,0 +1,15 @@
+
+    <div class="container">
+        <h1>Student Information</h1>
+        <div *ngFor="let student of students" class="student">
+            <h3>{{ student.name }}</h3>
+            <p>Course: {{ student.course.title }}</p>
+            <p>Teacher: {{ student.course.teacher.name }}</p>
+            <p>Summary: {{ student.course.summary }}</p>
+            <p>Level: {{ student.course.level }}</p>
+            <p>Available Places: {{ student.course.availablePlaces }}</p>
+        </div>
+        <h2>Add New Student</h2>
+        
+    </div>
+    

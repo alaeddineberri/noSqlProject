@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Course Information</h1>
+    <div *ngFor="let course of courses" class="course">
+        <h3>{{ course.title }}</h3>
+        <p>Teacher: {{ course.teacher.name }}</p>
+        <p>Summary: {{ course.summary }}</p>
+        <p>Level: {{ course.level }}</p>
+        <p>Available Places: {{ course.availablePlaces }}</p>
+    </div>
+</div>
+

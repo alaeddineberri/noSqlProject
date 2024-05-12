@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Teacher Information</h1>
+    <div *ngFor="let teacher of teachers" class="teacher">
+        <h3>{{ teacher.name }}</h3>
+        <p>Course: {{ teacher.course?.title || 'N/A' }}</p>
+    </div>
+</div>
