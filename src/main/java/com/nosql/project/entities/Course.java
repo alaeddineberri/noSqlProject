@@ -1,6 +1,7 @@
 package com.nosql.project.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Course {
 
     ////////////////// a course have multiple students
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Student> students;
     ///////////////// a course have one Teacher
     @OneToOne
