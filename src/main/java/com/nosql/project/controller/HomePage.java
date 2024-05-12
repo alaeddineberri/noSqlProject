@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/noSqlProject")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class HomePage {
     private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
     @Autowired
@@ -27,7 +28,7 @@ public class HomePage {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    @Cacheable("teachers")
+
     @GetMapping("/teachers")
     public List<Teacher> getTeachers(){
         return teacherRepository.findAll() ;
@@ -42,7 +43,7 @@ public class HomePage {
     }
 
     ///////////course
-    @Cacheable("courses")
+
     @GetMapping("/courses")
     public List<Course> getCourses(){
         return courseRepository.findAll() ;
@@ -57,7 +58,7 @@ public class HomePage {
         return courseRepository.save(course) ;
     }
     ////////////////////////Studant
-    @Cacheable("students")
+
     @GetMapping("/students")
     public List<Student> getStudents(){
         return studentRepository.findAll() ;
@@ -93,3 +94,4 @@ public class HomePage {
 
 
 }
+

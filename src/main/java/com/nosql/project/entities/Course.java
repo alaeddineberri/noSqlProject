@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@RedisHash("Course")
+//@RedisHash("Course")
 @Table(name = "courses")
 public class Course implements Serializable {
 
@@ -110,5 +110,18 @@ public class Course implements Serializable {
 
     public void setAvailablePlaces(Integer availablePlaces) {
         this.availablePlaces = availablePlaces;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", students=" + students +
+                ", teacher=" + teacher +
+                ", summary='" + summary + '\'' +
+                ", level='" + level + '\'' +
+                ", availablePlaces=" + availablePlaces +
+                '}';
     }
 }

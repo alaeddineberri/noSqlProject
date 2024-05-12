@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.RedisHash;
 import java.io.Serializable;
 
 @Entity
-@RedisHash("Student")
+//@RedisHash("Student")
 @Table(name = "students")
 public class Student  implements Serializable {
     @Id
@@ -56,5 +56,14 @@ public class Student  implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", course=" + course +
+                '}';
     }
 }
