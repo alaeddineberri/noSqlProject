@@ -3,12 +3,15 @@ package com.nosql.project.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@RedisHash("Course")
 @Table(name = "courses")
-public class Course {
+public class Course implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

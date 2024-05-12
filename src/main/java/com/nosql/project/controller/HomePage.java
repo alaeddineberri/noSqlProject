@@ -9,6 +9,7 @@ import com.nosql.project.repository.TeacherRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ public class HomePage {
     @Autowired
     private TeacherRepository teacherRepository;
 
+    @Cacheable("teachers")
     @GetMapping("/teachers")
     public List<Teacher> getTeachers(){
         return teacherRepository.findAll() ;
@@ -40,6 +42,7 @@ public class HomePage {
     }
 
     ///////////course
+    @Cacheable("courses")
     @GetMapping("/courses")
     public List<Course> getCourses(){
         return courseRepository.findAll() ;
@@ -54,7 +57,7 @@ public class HomePage {
         return courseRepository.save(course) ;
     }
     ////////////////////////Studant
-
+    @Cacheable("students")
     @GetMapping("/students")
     public List<Student> getStudents(){
         return studentRepository.findAll() ;

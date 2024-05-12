@@ -2,10 +2,14 @@ package com.nosql.project.entities;
 
 
 import jakarta.persistence.*;
+import org.springframework.data.redis.core.RedisHash;
+
+import java.io.Serializable;
 
 @Entity
+@RedisHash("Teacher")
 @Table(name = "teachers")
-public class Teacher {
+public class Teacher  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
